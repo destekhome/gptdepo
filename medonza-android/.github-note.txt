@@ -1,0 +1,1 @@
+Bu dal yalnız MEDONZA Android debug APK derlemesi için oluşturuldu. Main dalına dokunmaz.

@@ -1,0 +1,15 @@
+package com.medonza.paketleme
+
+data class OrderItemDto(val id: Long? = null,val productName: String = "",val merchantSku: String? = null,val marketplaceSku: String? = null,val barcode: String? = null,val quantity: Int = 1,val variant: String? = null,val imageUrl: String? = null,val internalSku: String? = null,val displayName: String? = null,val resolvedImageUrl: String? = null,val verificationBarcode: String? = null)
+data class FirstScanDto(val cargoBarcode: String = "",val deviceId: String = "",val deviceName: String = "",val claimedAt: String = "")
+data class OrderDto(val id: Long = 0,val marketplace: String = "",val marketplaceOrderId: String? = null,val packageId: String = "",val orderNumber: String? = null,val cargoBarcode: String = "",val customerName: String? = null,val status: String = "",val cargoProvider: String? = null,val items: List<OrderItemDto> = emptyList(),val firstScan: FirstScanDto? = null)
+data class ScanRequest(val cargoBarcode: String, val deviceId: String, val deviceName: String)
+data class ScanResponse(val found: Boolean = false,val duplicate: Boolean = false,val firstScan: FirstScanDto? = null,val order: OrderDto? = null)
+data class DeviceRequest(val deviceId: String, val deviceName: String)
+data class SyncResponse(val results: List<Map<String, Any?>>? = null)
+data class RecentScanDto(val id: Long = 0,val cargoBarcode: String = "",val orderId: Long? = null,val deviceId: String = "",val deviceName: String = "",val scannedAt: String = "",val isDuplicate: Int = 0,val marketplace: String? = null,val orderNumber: String? = null,val productName: String? = null)
+data class RecentResponse(val items: List<RecentScanDto> = emptyList())
+data class SearchResponse(val items: List<OrderDto> = emptyList())
+data class HealthDto(val ok: Boolean = false, val mockMode: Boolean = false, val time: String = "")
+data class IntegrationDetail(val configured: Boolean? = null,val marketplace: String? = null,val lastSuccessAt: String? = null,val lastError: String? = null,val lastAttemptAt: String? = null)
+data class IntegrationStatusDto(val mockMode: Boolean = false,val trendyol: IntegrationDetail? = null,val hepsiburada: IntegrationDetail? = null)
